@@ -65,5 +65,153 @@ Un développeur doit connaitre son employeur et ses clients. Il faut comprendre 
 Un développeur doit être humble. Assumer ses erreurs, être fier de son travail et confiant.
 
 
-## Saying No (page 23)
+## Saying No
+
+Il faut savoir dire non de manière professionnel.
+Lorsqu'on reçoit une demande impossible il ne faut pas éviter la confrontation, il faut dire non et arriver au meilleur point d'entente possible.
+
+### What about the why
+
+Les faits importent plus que le pourquoi. Lorsqu'on dit non, expliquer pourquoi peut aider le demandeur à comprendre mais il peut aussi pousser à remettre en cause
+les étapes necessaires de la livraison. Expliquer le pourquoi peut encourager le micro management.
+
+### High stakes
+
+Plus l'enjeu est grand plus il est important de dire non.
+
+### Trying
+
+Demander d'essayer plus pour livrer des feature plus tôt implique que la personne effectuant cette demande estime que l'ingénieur garde des ressources.
+Dans ce cas il faut dire non et se tenir au plan.
+
+Note: Il est important de mettre sur écris les demandes et les engagements pour se protéger.
+
+### Is it impossible to get good code ?
+
+Question cachée: est-ce impossible d'être professionel dans le développement informatique.
+
+Le développeur est responsable de ce qu'il accepte.
+Le client n'a pas tord de demander ce pour quoi il est prêt a payer si le développeur
+accepte la requète.
+Le client est ignorant du cout technique.
+C'est au développeur de dire ce qui est possible et ce qui n'est le pas.
+Etre un héro codeur finira surement par un produit défectueux au prix de longue mauvaise heure de travail.
+
+
+# Saying Yes
+
+il faut savoir comment dire oui.
+
+## A language of commitment
+
+say, mean, do
+
+annoncer ce qu'on va faire, le pensee vraiment, realiser
+
+## Recognizing lack of commitment
+
+Need/should
+
+Hope/wish
+
+Let's et ne s'inclue pas dans le reste de la phrase 
+
+Un exemple de vrai commit est "I will do this by tuesday"
+
+C'est un vrai engagement fait devant une ou plusieurs autres personnes. Il doit etre reflechi et faisable. L'acomplir rend le developpeur reliable.
+
+Commit quand on depend d'un achevement d'une autre personne.
+
+- idientifier les depzndances.
+- cree une interface qui abtrait les dependances de l'autre module
+- s'assurer que les changemenrs marcheront dans le systeme future
+- creer un build personnel qui execute des testes d'integrations
+
+Commit quand on est pas sur de la livraison
+exemple : fix all the bugs
+- reproduire les bugs cncretement
+- refaire les bugs avec le QA
+- best effort sur le fix dd bug.
+
+Commit quand ca marche juste pas:
+-changer les objectifs 'e plus tot possible
+-prevenir le plus vite possible
+
+
+# Coding
+
+Règles à suivre:
+- Le code doit fonctionner. Le développeur doit comprendre les problèmes qu'il résout. Toutes les solutions doivent rester cohérentes avec l'environnement de développement (Pas faire du java en python par exemple.)
+- C'est au développeur de s'assurer que le problème qu'il résout est un plus pour l'utilisateur.
+- Le code doit bien s'intégrer au reste du développement. Ne pas le rendre plus compliqué, ne pas le rendre plus fragile ou plus opaque.
+- Le code doit être lisible par les autres programmeurs.
+
+## Debugging
+
+Utiliser des outils de debuggin.
+Faire du TDD.
+
+## Being late
+
+Quand une livraison est en retard en terme de code, il faut le détecter le plus tot possible et rester transparent.
+Un moyen de prévenir les retard de livraison le progrès du développement en fonction des objectifs.
+Etablir 3 dates factuelles, Best case, nominal case, worst case.
+
+## Hope
+
+L'espoire n'a pas sa place dans une estimation.
+
+## Rushing
+
+Le rush n'existe pas. Rushé c'est mal codé plus vite. Rendre un rush possible c'est dire que le développeur ne se donne pas déjà au maximum. Le rush doit être évité car il ne fait que ralentir du au erreur qu'il ajoute.
+
+## Overtime
+
+Parfois l'overtime est necessaire.
+3 check avant d'accepter un overtime :
+- Le développeur peut se le permettre personnelement.
+- C'est sur du court terme, l'overtime doit être cadrer.
+- Le supérieur qui demande de l'overtime doit avoir un plan B si l'overtime échoue.
+Si ces conditions ne sont pas remplis refuser l'overtime.
+
+## False delivery
+
+Il faut rester stricte sur la définition de "Done", une tâche "Done" est testé et validée, idéalement automatiquement.
+
+# Test Driven Development
+
+## The three law of TDD
+
+1. Le développeur n'a pas le droit d'écrire du code en production si il n'a pas écris un test unitaire qui échoue.
+2. Le développeur n'a pas le droit d'écrire plus de code que ce dont le test unitaire a besoin pour échouer.
+3. Le développeur n'a pas le droit d'écrire plus de code de production qu'il n'en n'ait necessaire pour faire réussir les tests unitaires couraments en échec.
+
+## The litany of benefits
+
+### Certainity
+
+Le TDD est couteux et doivent être executé à chaque changement de code.
+Les test unitaires valident le bon fonctionnement des fonctionnalités.
+
+### Defect injection rate
+
+Le TDD réduit le taux de bug.
+
+## Courage
+
+On a moins peur d'itérer sur un code qui bien unitairement testé.
+On a moins peur d'ajouter une feature lorsqu'on fait du TDD parceque chaque changement valide déjà un test.
+
+## Documentation
+
+Les tests unitaires sont une bonne documentation. Car ils représentent directement ce que le code fait.
+
+## Design
+
+Code difficile à tester = Mauvais design.
+Itérer en TDD n'est pas confortable mais ça pousse à bien respecter les bonnes pratiques de programmation.
+Notamment l'isolation des différents modules du code.
+Lorsque chaque module du code est isolé, chacun de ces modules seront unitairements testables.
+En écrivant les tests avant, on est forcé de bien découpler les différentes fonctions.
+Le TDDs poussent à bien designer son code.
 
