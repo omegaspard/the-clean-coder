@@ -215,3 +215,65 @@ Lorsque chaque module du code est isolé, chacun de ces modules seront unitairem
 En écrivant les tests avant, on est forcé de bien découpler les différentes fonctions.
 Le TDDs poussent à bien designer son code.
 
+
+# Practicing
+
+Le travail n'est pas de la pratique, le travail est une performance. Un développeur professionel se doit de pratiquer en dehors de son temps de travail afin de garder ses compétences aiguisées et même de les améliorées.
+
+## Kata
+
+Comme dans les art-martiaux, on apprend par la répétition. Les Katas sont des éxercices que l'on répète de manière quotidienne
+afin de s'approprier certain réflexes. Par exemple faire des exercices en TDD qui necessite des va et vient rapide entre les tests unitaires et le code sont des bons entrainements. Le problème à résoudre est toujours le même mais ça n'a pas d'importance car on vise à être meilleur sur la réalisation. On peut inclure dans cette pratique la maitrise de l'IDE, de git etc...
+
+## Open source
+
+L'informatique est vaste, touché à plusieurs languages de manières applicatives permet d'avoir une meilleure vue d'ensemble et d'être plus créatif.
+Commiter sur un projet open source est un bon moyen de pratiquer dans des millieux étrangés.
+
+
+# Acceptance testing
+
+## The definition of "Done"
+
+Une tâche est rempli une fois qu'elle valide passe les tests d'acceptance, c'est pour cette raison qu'il est important de les définir en amont, car les tests d'acceptance valide les différentes feature auxquelles le composant doit répondre.
+Les tests d'acceptances doivent être écris dans un language humain, ce ne sont pas des tests unitaires. Ils doivent aussi être fait avec le produit.
+
+Example :
+
+given the command LogFileDirectoryStartupCommand
+givent that the old_inactive_logs directory does not exist
+when the command is executed
+then the old_inactive_logs_directory directory shoudl exist
+and it should be empty
+
+## Automation
+
+Les tests d'acceptances doivent être automatisé. C'est au développeur de s'assurer que c'est bien le cas. Le coup de mise en place de cette automatisation est minuscule comparé à celui de refaire des tests d'acceptances de manuellement à chaque fois.
+
+## Extra work
+ 
+On peut penser que faire un stack de test automatique est de l'overkill. Il est vrai que tout mettre en place est lourde charge.
+Cela dit, c'est uniquement cette stack qui assure au développeur que le contrat est rempli.
+
+## Who Writes Acceptance Tests, and When ?
+
+Les tests d'acceptance devraient être implémenté le plus tard possible, une fois que tout le dev est terminé.
+Ils devraient être défini par le produit.
+
+## The Developper's Role
+
+Il s'assure que les tests d'acceptance sont connectés au système et il s'assure que ces test passent.
+
+## Acceptance Tests and Unit Tests
+
+Tests unitaires -> Par le programmeur pour les programmeurs
+Tests d'acceptances -> Par le produit pour le produit
+
+## Continous Integration
+
+Les tests d'acceptances doivent être lancés à chaque changement de code, à chaque modification de composant par la CI.
+
+### Stop the Presses
+
+Quand les tests d'acceptances échouent, toutes l'équipe devraient s'arréter afin de passer sur la raison de cet echec.
+C'est important car le developpement de résolution peut influer sur tous les développements en cours.
