@@ -277,3 +277,246 @@ Les tests d'acceptances doivent être lancés à chaque changement de code, à c
 
 Quand les tests d'acceptances échouent, toutes l'équipe devraient s'arréter afin de passer sur la raison de cet echec.
 C'est important car le developpement de résolution peut influer sur tous les développements en cours.
+
+
+# Testing Strategies
+
+## QA should find nothing.
+
+Le produit en devrait pas trouver de bug. On doit tendre vers cet idéal.
+Le produit fait partie de l'équipe.
+C'est au produit de définir les tests d'acceptances et c'est au produit d'itérer sur tout le système pour en identifier les comportements.
+
+## The Test Automation Pyramid
+
+Unit tests > Compnent tests > Integration tests > System tests > M Exploratory
+
+## Unit Test
+
+Les premiers tests à écrire. Fait par le programmeur pour le programmeur.
+Spécifie le system à son plus bas niveau (les fonctions).
+Ils sont écris avant et aide à écrire.
+Ils font parti de la CI et garantisse la non regression du code.
+Ces tests doivent atteindre un couverture de 90% et doivent assurer qu'ils testent bien le comportement des fonctions.
+Fait avec un framework de test unitaire.
+
+## Component Tests
+
+Ce sont les tests d'acceptances.
+On écris ces tests pour tester un composant en entier qui inclut les règles du produits.
+Ces tests prennent des données en entrées de composant et on compare les données en sortie de composant.
+Les autres composants du système n'interviennent pas.
+Ils sont écris par le produit avec l'aide d'un developpeur, le produit doit pouvopir les lire ou même les écrire.
+Ces tests check les happy-path (on regarde si tout s'exécute bien).
+Fait avec un framework de test de composant (Fiteness etc..)
+Couvre 50 % du projet.
+
+## Integration Tests
+
+N'ont d'utilité seulement pour les systèmes complexes (qui incluent beaucoup de composant).
+On teste comment les différents vont communiquer entre eux et se choéragrphy bien.
+Ces tests n'ont pas besoin de vrai données.
+Ces tests s'assurent que tout est bien connecté.
+Ils sont écris par les architectes.
+C'est a ce niveau qu'on teste les performances.
+Ils sont écris dans le même language que les tests de composants (même framework).
+Ils ne font pas partie de la CI car ils sont lourds.
+Couvre 20 % du projet.
+
+## System Tests
+
+Les tests d'intégration ultime. Il s'assure que tout le système est bien connecté.
+Devrait faire ressurgir des problèmes de performances.
+Désigné par les architects et les tech lead.
+Fait avec un framework.
+Leur but est d'assurer la construction du système et non son comportement.
+
+## Manual Exporatory Tests
+
+Ce sont des tests fait à la main.
+Ils ne sont pas automatisés.
+Ils s'appuient sur la créativité du testeur.
+Le but n'est pas de tout couvrir mais de s'assurer que le système répond bien sous l'action humaine.
+
+# Time Management
+
+## Meetings
+
+Les meetings prennent du temps. Il faut choisir ceux ou on va et décliner ceux qui ne représentent pas d'intéret. Si un meeting n'est pas intéressant, on peut partir.
+
+## Have an Agenda And a Goal
+
+Le développeur doit savoir le meeting auquel il assiste et dans quel but il y assiste.
+Le meeting doit énoncer son sujet de manière claire et dans un temps délimité.
+Le meeting doit avoir un but: qu'est ce qu'on attend comme résultat à la fin de ce meeting ?
+
+## Stand-Up Meetings
+
+1. Qu'ai-je fais hier ?
+2. Que vais-je faire aujourd'hui ?
+3. Qu'est ce qui me bloque ?
+
+Pas plus de 10 minutes.
+
+## Iteration Planning Meetings
+
+On assigne les tâches au différentes personnes de l'équipe.
+Pas plus de 5 minutes par tâche, si il y'a besoin de plus, il faut reporter le sujet avec seulement les membres de l'équipe concernés.
+Pas plus de deux heures par semaine.
+
+## Iteration Restropective And Demo
+
+20 minutes retro
+25 minutes demo
+
+Il ne devrait pas y avoir beaucoup à montrer/discuter après un sprint de deux semaines.
+
+## Arguments/Disagreements
+
+"Un argument qui ne se conclut pas en 5 mintues ne peut pas être conlcut".
+La raison est que des deux côtés il n'y a pas de vrai preuve qui supporte un coté ou l'autre.
+Les arguments ne sont pas factuels.
+Le moyen de résolution est de faire présenter les deux parties leur cas dans en 5 minutes et faire un vote de l'équipe.
+Il ne faut pas être de mauvoise fois, si on s'est mis d'accord sur unr solution, il faut s'engager honnetement même si ce n'était pas la préférée.
+Faire attention au meeting qui sont juste en place pour montrer son désaccord de manière flou.
+Eviter les meetings ou il n'y a qu'un seul point de vue présenté.
+
+## Time Boxing And Tomatoes
+
+Répartir tout son temps en tomate.
+Chaque tomate représente 20 minutes.
+Prendre une pause de 5 minutes entre chaque tomates.
+Regarder combien de tomate on été réalisé en une journée et regarder ce qui a été fait avec ce nombre de tomate.
+
+## Avoidance
+
+### Priority Inversion
+
+Un mensonge que le développeur se dit à lui même car il ne veut pas faire une tâche. Il va se convaincre que cette tâche est moins importante qu'une autre. Ne pas faire ça. Le professionel doit rester factuel.
+
+## Blind Alleys
+
+Quand on fait un choix qui s'avère ne pas donner de résultat, c'est un trou.
+Par exemple une décision technique qui soulève encore plus de barière technique.
+Il faut savoir reconnaitre les trous le plus vite possible.
+Si on est dans un trou, on s'arrête de creuser.
+
+## Marshes, Bogs, Swamps, And Other Messes
+
+Quand on entre dans un gros bordel, on est tenté de s'accomoder le bordel et d'itérer dessus.
+Parfois cette situation est inévitable et on doit garder le travail le plus propre possible.
+Cela dit plus les demandes auguementent sur le bordel plus il est dur d'itérer sur le code.
+En continuant dans cette direction on s'expose à une perte de productivité future car le code ne s'accord plus avec les demandes du produit.
+A ce moment la il faut faire le choix de fixer le design, plus on auguemente plus il sera dur de revenir en arrière plus tard.
+
+# Estimation
+
+## A Commitement
+
+Un engagement est un chose que l'on doit fini. Si on s'engage, on doit faire tout ce qui est nécessaire pour réaliser cet engagement. On ne s'engage pas avant d'avor tous les éléments necessaire qui assure la réussite de cete engagement.
+Dans le développement, d'autre personne vont se baser sur cet engagement pour leur travail, c'est important de ne pas échouer quand on s'engage.
+
+## An Estimate
+
+Une estimation est une supposition, on fait des suppositions car on ne sait pas combien de temps une tâche pourrait prendre.
+Une estimation est une probabilté de distribution, par exemple pour une tâche dont on peut scorer le cout de 1 à 11, on peut supposer que la distribution serait la suivante :
+10 % de chance que la tâche coute 1
+20 % de chance que la tâche coute 2
+50 % de chance que la tâche coute 3
+10 % de chance que la tâche coute 4
+(Les 10 dernier % distribués sur les notes restantes)
+
+### Implied Commitment
+
+Il ne faut pas accepter "d'essayer" pour une estimation donnée, c'est un engagement caché. Jusqu'ou s'arrete la définition d'essayer ? 
+
+## Pert
+
+Pour estimer on donne trois chiffres.
+O, pour Estimation optimiste. Il a peu de chance d'arriver car ça signifie qu'il y 0 surprise.
+N, pour estimation nominal.
+P, pour estimation pessimiste. L'inverse de O.
+
+micro = (O + 4N + P)/ 6 -> La durée de la tâche.
+teta = (P - O)/6 -> la deviation standard, la certainité de la tâches.
+
+Pour la durée de plusieur tâches on en fait la somme.
+Pour la déviation standard de plusieurs tâches on fait -> racince carré(somme(deviation standard)²)
+
+## Estimating Tasks
+
+C'est quelque chose qui se fait en équipe.
+Différentes méthodes:
+- Wideband Delphi
+- Flying Fingers
+- Planning Poker
+- Affinity Estimation
+- Rivariate Estimates
+
+
+# Pressure
+
+Règle à suivre pour éviter la pression :
+- **Commitments**. On peut refuser des engagements, on ne s'engage que lorsqu'on est sur.
+- **Staying Clean**. Quand c'est le bordel on est tenté de faire du "quick and dirty", c'est un oxymore. Salle veut toujours dire lent. Dans n'importe quel situation, les productions d'un professionels doivent rester consistante ou faire au mieux.
+- **Crisis Dicipline**. Il faut rester fidèle à ses principes même en temps de crise. Toujours faire du TDD, toujours faire de la doc, toujours automatisé etc...
+- **Don't panic**
+- **Communicate** Quand on a un problème, on le communique.
+- **Rely on your dicipline** Ne pas perdre confiance dans les bonnes pratiques, elles sont la pour gérer les cas compliqués.
+- **Get Help** Demander de l'aide quand on en a besoin.
+
+
+# Collaboration
+
+## Programmer Versus Employer
+
+Un développeur doit être conscient de son environment, déplier des tickets et débugger ne sont pas suffisant. Il doit prendre en compte les demande de son employeur et être présent pour le produit. Il doit avoir une attitude professionel (respecter le code vestimentaire, les horaires, ne pas faire autre chose que son boulot etc)
+
+## Programmer Versus Progrmmer
+
+### Owned Code and Collective Onwership
+
+Le code doit être partagé. Il n'appartient pas à un développeur mais à l'équipe. On peut être amener à reprendre/maintenir/debugger la pile de travail de quelqu'un d'autres.
+
+### Pairing
+
+Le pragrammation groupé est optimal. En effet quand on débug dans un moment de crise, on le fait souvent en groupe, c'est aussi le cas pour le developpement. C'est un bon moyen de partager la connaissance.
+Le meilleur moyen de vérifier du code et de collaborer lors de son écriture.
+
+## Cerebellums
+
+C'est une partie dans le dos du crane.
+Le professionel travaille en groupe, il collabore. C'est une équipe.
+Un développeur peut penser qu'il travaille mieux tout seul mais la team ne marchera pas mieux avec ce genre d'individualité.
+Le plus important est le fonctionnement de l'équipe.
+
+
+# Teams And Projects
+
+Critère d'une bonne équipe:
+- Tous les membres de l'équipe sont assignés sur un seul projet. Un membre ne peut pas être sur deux projets à la foix.
+- Les membres de l'équipe ont appris à travailler ensemble, ils ont des rôles bien définis (developpeur, testeurs, analiste, chef de projet), 2 développeur pour 1 testeur est un bon ratio.
+- Le chef de projet traque les évolutions des projets et de l'équipe.
+- Un membre de l'équipe peut être un leader, coaching et garde des bonnes disciplines.
+
+L'équipe est plus importante que le projet.
+
+
+# Mentoring, Apprenticeship And Craftmanship
+
+Le développement est un travail que l'on peut comparer à celui de l'artisant.
+C'est une personne qui travaille vite mais sans se précipité, il donne de bonne estimation et réalise ses engagements. Il sait quand dire non et essayement honnetement de dire oui. C'est un professionel.
+
+Parfois on peut se retrouver dans un environment qui ne répond pas à cette définition du professinalisme. La meilleur chose à faire dans ce cas est de montrer l'exemple.
+
+
+# Tooling
+
+Les outils à avoir dans un projet:
+- Source code control (git)
+- IDE
+- Logiciel de suivi de tâches/problèmes
+- CI/CD
+- Outils de tests unitaire
+- Outils de tests de composant (intégration, système etc)
+
